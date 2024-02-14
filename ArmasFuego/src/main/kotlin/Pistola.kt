@@ -2,17 +2,38 @@ import kotlin.random.Random
 
 class Pistola(
     municion: Int,
-    municionARestar: Int,
-    tipoDeMunicion: String,
-    var radio: ValoresRadio,
-    nombre: String = "Pistola"
+    radio: ValoresRadio,
+
+    tipoDeMunicion: String = "9mm",
+    nombre: String = "Pistola",
+    municionARestar: Int = 1,
+
 ): ArmaDeFuego(nombre, municion, municionARestar, tipoDeMunicion) {
 
-    val danio: Int = Random.nextInt(1,5)
+    var radio = radio
+        set(value) {
+            requireradio()
+            field = value
+        }
+
+    var danio: Int = Random.nextInt(1,5)
+        set(value) {
+            requiredanio()
+            field = value
+        }
 
     init {
+        requiredanio()
+        requireradio()
+    }
+
+    fun requireradio(){
+        require(radio == ValoresRadio.Corto || radio == ValoresRadio.Intermedio) {"El rango del rifle debe ser corto o Intermedio"}
+    }
+
+
+    fun requiredanio(){
         require(danio in 1..5){"El daño de la pistola no puede ser mayor a 5 y menor que 1"}
-        require(radio == ValoresRadio.Corto || radio == ValoresRadio.Reducido) {"El rango de la pistola debe ser corto o reducido"}
     }
 
 

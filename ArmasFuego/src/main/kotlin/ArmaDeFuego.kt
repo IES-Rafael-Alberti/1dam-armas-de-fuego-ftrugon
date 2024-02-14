@@ -1,7 +1,7 @@
 import kotlin.random.Random
 
 abstract class ArmaDeFuego(
-    private val nombre: String,
+    val nombre: String,
     private var municion: Int,
     private val municionARestar: Int,
     private val tipoDeMunicion: String,
