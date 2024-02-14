@@ -28,7 +28,7 @@ class Pistola(
     }
 
     fun requireradio(){
-        require(radio == ValoresRadio.Corto || radio == ValoresRadio.Intermedio) {"El rango del rifle debe ser corto o Intermedio"}
+        require(radio == ValoresRadio.Corto || radio == ValoresRadio.Reducido) {"El rango del rifle debe ser corto o Reducido"}
     }
 
 
